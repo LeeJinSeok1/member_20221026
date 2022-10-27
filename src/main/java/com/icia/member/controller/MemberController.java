@@ -55,20 +55,20 @@ public class MemberController {
     }
 //    DB에 이메일과 패스워드 정보를 가져와야함
 //    그리고 입력한 이메일과 패스워드를 비교
-   @PostMapping("/login")
-    public String login(@RequestParam("memberEmail") String email,
-                        @RequestParam("memberPass") String pass){
-       MemberDTO md = new MemberDTO();
-       md.setMemberEmail(email);
-       md.setMemberPassword(pass);
-       MemberDTO member1 = memberService.login(md);
-       if(member1.getMemberEmail().equals(email) && member1.getMemberPassword().equals(pass)){
-           return "memberMain";
-       }else{
-           return "saveFail";
-       }
+//   @PostMapping("/login")
+//    public String login(@RequestParam("memberEmail") String email,
+//                        @RequestParam("memberPass") String pass){
+//       MemberDTO md = new MemberDTO();
+//       md.setMemberEmail(email);
+//       md.setMemberPassword(pass);
+//       MemberDTO member1 = memberService.login(md);
+//       if(member1.getMemberEmail().equals(email) && member1.getMemberPassword().equals(pass)){
+//           return "memberMain";
+//       }else{
+//           return "saveFail";
+//       }
 
-   }
+
 
 
 }

@@ -32,8 +32,8 @@ public class MemberService {
     }
 
 
-    public MemberDTO login(MemberDTO md) {
-        MemberDTO member1 = memberRepository.login(md);
-        return member1;
-    }
+//    public MemberDTO login(MemberDTO md) {
+//        MemberDTO member1 = memberRepository.login(md);
+//        return member1;
+//    }
 }

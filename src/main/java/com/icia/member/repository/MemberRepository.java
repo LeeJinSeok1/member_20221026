@@ -29,10 +29,10 @@ public class MemberRepository {
     }
 
 
-    public MemberDTO login(MemberDTO md) {
-        MemberDTO member1 = sql.selectOne("member.login",md);
-        return member1;
-    }
+//    public MemberDTO login(MemberDTO md) {
+//        MemberDTO member1 = sql.selectOne("member.login",md);
+//        return member1;
+//    }
 }
 
 

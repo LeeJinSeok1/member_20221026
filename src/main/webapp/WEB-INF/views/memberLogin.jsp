@@ -9,14 +9,17 @@
 <html>
 <head>
     <title>memberLogin.jsp</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <h2>로그인 창</h2>
+<div class="container">
 <form action="/login" method="post">
-    <input type="text" name="memberEmail" placeholder="이메일주소"> <br>
-    <input type="text" name="memberPassword" placeholder="비밀번호"> <br>
-    <input type="submit" value="로그인하기!">
+    <input type="text" name="memberEmail" placeholder="이메일주소" class="form-control"> <br>
+    <input type="text" name="memberPassword" placeholder="비밀번호" class="form-control"> <br>
+    <input type="submit"  class="btn btn-primary" value="로그인하기!">
 </form>
+</div>
 
 </body>
 </html>

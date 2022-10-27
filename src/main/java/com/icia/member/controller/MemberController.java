@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
 import java.util.List;
 
@@ -53,20 +54,20 @@ public class MemberController {
     public String loginPage(){
         return "memberLogin";
     }
-//    DB에 이메일과 패스워드 정보를 가져와야함
-//    그리고 입력한 이메일과 패스워드를 비교
-//   @PostMapping("/login")
-//    public String login(@RequestParam("memberEmail") String email,
-//                        @RequestParam("memberPass") String pass){
-//       MemberDTO md = new MemberDTO();
-//       md.setMemberEmail(email);
-//       md.setMemberPassword(pass);
-//       MemberDTO member1 = memberService.login(md);
-//       if(member1.getMemberEmail().equals(email) && member1.getMemberPassword().equals(pass)){
-//           return "memberMain";
-//       }else{
-//           return "saveFail";
-//       }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session,
+                        Model model){
+        boolean result= memberService.login(memberDTO);
+       if(result){
+           // 세션에 로그인한 사용자의 이메일을 저장
+           session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+           model.addAttribute("mEmail",memberDTO.getMemberEmail());
+           return "memberMain";
+       }else{
+           return "memberLogin";
+       }
+    }
 
 
 

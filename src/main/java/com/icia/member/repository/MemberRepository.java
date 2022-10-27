@@ -28,11 +28,12 @@ public class MemberRepository {
         return  mem;
     }
 
+    public MemberDTO login(MemberDTO memberDTO) {
+        return  sql.selectOne("member.login",memberDTO);
+    }
 
-//    public MemberDTO login(MemberDTO md) {
-//        MemberDTO member1 = sql.selectOne("member.login",md);
-//        return member1;
-//    }
+
+
 }
 
 

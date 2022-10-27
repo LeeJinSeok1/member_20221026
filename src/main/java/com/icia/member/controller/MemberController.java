@@ -37,7 +37,7 @@ public class MemberController {
     }
 
     @GetMapping("/members")
-    public String members(@ModelAttribute MemberDTO memberDTO,Model model) {
+    public String members(Model model) {
         List<MemberDTO> mList = memberService.members();
         model.addAttribute("members",mList);
         return "memberList";

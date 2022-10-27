@@ -10,10 +10,12 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <h2>회원전체목록</h2>
-<table>
+<div class="container">
+<table class="table table-dark table-striped">
     <tr>
         <th>번호</th>
         <th>이메일</th>
@@ -22,6 +24,7 @@
         <th>이름</th>
         <th>나이</th>
         <th>전화번호</th>
+        <th>조회하기</th>
     </tr>
     <c:forEach items="${members}" var="mem">
         <tr>
@@ -33,10 +36,13 @@
             </td>
             <td>${mem.memberAge}</td>
             <td>${mem.memberMobile}</td>
+            <td>
+                <a href="/memberDetail?memberId=${mem.memberId}">조회</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
-
+</div>
 
 </body>
 </html>

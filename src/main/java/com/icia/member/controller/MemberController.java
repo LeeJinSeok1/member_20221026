@@ -95,6 +95,22 @@ public class MemberController {
         model.addAttribute("model",member1);
         return "memberUpdate";
     }
+    @PostMapping("/update")
+    public String updating(@ModelAttribute MemberDTO memberDTO){
+        boolean result = memberService.updating(memberDTO);
+        if(result){
+            return "redirect:/memberDetail?memberId="+memberDTO.getMemberId();
+
+        }else{
+            return "index";
+        }
+
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
 
 
 

@@ -50,4 +50,13 @@ public class MemberService {
     public MemberDTO update(String memberEmail) {
         return memberRepository.update(memberEmail);
     }
+
+    public boolean updating(MemberDTO memberDTO) {
+       int result=  memberRepository.updating(memberDTO);
+      if(result>0){
+          return  true;
+      }else {
+          return  false;
+      }
+    }
 }

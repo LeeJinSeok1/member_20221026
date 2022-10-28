@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <h2>상세조회</h2>
 <h4>번호: ${memberFind.memberId}</h4>
 <h4>이메일: ${memberFind.memberEmail}</h4>

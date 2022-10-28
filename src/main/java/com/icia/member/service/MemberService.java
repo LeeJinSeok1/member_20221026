@@ -41,5 +41,13 @@ public class MemberService {
     }
 
 
+    public void delete(Long id) {
+        memberRepository.delete(id);
 
+    }
+
+
+    public MemberDTO update(String memberEmail) {
+        return memberRepository.update(memberEmail);
+    }
 }

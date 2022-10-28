@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>List</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
@@ -25,6 +25,7 @@
         <th>나이</th>
         <th>전화번호</th>
         <th>조회하기</th>
+        <th>삭제하기</th>
     </tr>
     <c:forEach items="${members}" var="mem">
         <tr>
@@ -39,10 +40,19 @@
             <td>
                 <a href="/memberDetail?memberId=${mem.memberId}">조회</a>
             </td>
+            <td><button class="btn btn-danger" onclick="dBtn(${mem.memberId})">삭제</button></td>
         </tr>
     </c:forEach>
 </table>
 </div>
+<script>
+    const dBtn = (clickId) => {
+        console.log('${members}');
+        console.log(clickId);
+        location.href= "/delete?memberId="+clickId;
+    }
+
+</script>
 
 </body>
 </html>

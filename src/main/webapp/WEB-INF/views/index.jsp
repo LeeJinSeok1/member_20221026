@@ -20,6 +20,7 @@
 <a href="/save">회원가입</a>
 <a href="/login">로그인</a>
 <a href="/members">회원목록출력</a>
+
 <button class="btn btn-primary" onclick="saveFn()">회원가입</button>
 <button class="btn btn-danger" onclick="loginFn()">로그인</button>
 <button class="btn btn-dark" onclick="listFn()">회원목록출력</button>

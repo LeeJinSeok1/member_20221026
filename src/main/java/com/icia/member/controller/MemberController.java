@@ -69,6 +69,34 @@ public class MemberController {
        }
     }
 
+    @GetMapping("/delete")
+    public String delete(@RequestParam("memberId") Long id,Model model){
+        memberService.delete(id);
+        // 리스트가 없기때문에 반복문이 돌지 않음
+        //해결방법 1. 삭제 후 목록을 DB에서 가져오고 memberList.jsp로간다.
+        List<MemberDTO> memberDTOList= memberService.members();
+        model.addAttribute("members",memberDTOList);
+
+        return "redirect:/members";
+
+    }
+
+    //memberEmail로 DB에서 해당 회원의 전체 정보 조회
+    //쎄션은 리턴타입이 오브젝트임.
+    //쎄션은 오브젝트타입이고 좌변은 스트링 타입이라서
+    //크기가 안 맞기 때문에 강제 형 변환을 진행해 주어야함.
+    //(String)으로
+    //추상메서드는 실행블록이 없는 메서드 (abstract)
+    @GetMapping("/update")
+    public String update(HttpSession session,Model model) {
+       // session에서 값을 가져오기
+        String memberEmail=(String)session.getAttribute("loginEmail");
+        MemberDTO member1 = memberService.update(memberEmail);
+        model.addAttribute("model",member1);
+        return "memberUpdate";
+    }
+
+
 
 
 

@@ -46,6 +46,11 @@ public class MemberRepository {
       int result=sql.update("member.updating",memberDTO);
     return  result;
     }
+
+
+    public String CheckEmail(String email) {
+       return  sql.selectOne("member.CheckEmail",email);
+    }
 }
 
 

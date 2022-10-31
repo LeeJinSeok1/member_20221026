@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
@@ -111,7 +108,57 @@ public class MemberController {
         session.invalidate();
         return "index";
     }
+    @GetMapping("ajax-ex")
+    public String ajaxEx() {
+        return "ajaxEx";
+    }
+    @GetMapping("/ajax1")
+    public @ResponseBody String ajax1() {
+        System.out.println("MemberController.ajax1");
+        return "ok";
+    }
+    @PostMapping("/ajax2")
+    public @ResponseBody String ajax2() {
+        System.out.println("MemberController.ajax2");
+        return "good";
+    }
+    @GetMapping("/ajax3")
+    public @ResponseBody String ajax3(@RequestParam("value1") String val1,
+                                      @RequestParam("value2") String val2){
+        System.out.println("val1 = " + val1 + ", val2 = " + val2);
+        return "집에 보내줘";
 
+    }
+    @PostMapping("/ajax4")
+    public @ResponseBody String ajax4(@RequestParam("value1") String val1,
+                                      @RequestParam("value2") String val2){
+        System.out.println("val1 = " + val1 + ", val2 = " + val2);
+        return "go home";
+    }
+    @PostMapping("/ajax5")
+    public @ResponseBody MemberDTO ajax5(@RequestParam("value1") String val1,
+                                      @RequestParam("value2") String val2){
+        System.out.println("val1 = " + val1 + ", val2 = " + val2);
+        System.out.println("MemberController.ajax5");
+        String val3 = "i am return";
+        MemberDTO memberDTO= memberService.findMember(1L);
+        return memberDTO;
+    }
+    @PostMapping("/ajax6")
+    public @ResponseBody List<MemberDTO> ajax6(@RequestParam("value1") String val1,
+                                         @RequestParam("value2") String val2){
+        System.out.println("val1 = " + val1 + ", val2 = " + val2);
+        System.out.println("MemberController.ajax5");
+        String val3 = "i am return";
+        List<MemberDTO> memberDTO= memberService.members();
+        return memberDTO;
+    }
+    @GetMapping("/duplicate-check")
+    public @ResponseBody String CheckEmail(@RequestParam("CheckEmail")String email) {
+        String ckEmail = memberService.CheckEmail(email);
+       return  ckEmail;
+
+    }
 
 
 

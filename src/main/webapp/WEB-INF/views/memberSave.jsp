@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+  <script src="/resources/js/jqurey.js"></script>
   <style>
     #save-form{
       width: 1000px;
@@ -20,7 +21,8 @@
 <h2>회원가입창</h2>
 <div class="container" id="save-form">
 <form action="/save" method="post"  name="saveForm">
-  이메일: <input type="text" name="memberEmail" class="form-control"> <br>
+  이메일: <input type="text" name="memberEmail" class="form-control"
+             onblur="emailDuplicateCheck()"  id="e"> <br>
   <span id="email-input-check"></span> <br>
   비밀번호: <input type="text" name="memberPassword" class="form-control"> <br>
   성함: <input type="text" name="memberName" class="form-control"> <br>
@@ -57,6 +59,33 @@
       return  false;
     }
     document.saveForm.submit();
+  }
+  const emailDuplicateCheck = () => {
+    const CheckEmail = document.getElementById("e").value;
+    const ck = document.getElementById("email-input-check");
+    $.ajax({
+        type:"get",
+        url:"/duplicate-check",
+        data:{
+          CheckEmail:CheckEmail
+        },
+        dateType: "text",
+        success: function (result) {
+          if(result=="no"){
+
+            ck.innerHTML = "이메일 중복"
+            ck.style.color="red";
+          }else{
+
+            ck.innerHTML = "멋짅 이메일이네요!"
+            ck.style.color="green";
+          }
+        },
+        error: function () {
+
+        }
+
+    })
   }
 
 </script>

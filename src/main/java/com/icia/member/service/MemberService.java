@@ -59,4 +59,16 @@ public class MemberService {
           return  false;
       }
     }
+
+
+    public String CheckEmail(String email) {
+        String ckEmail = memberRepository.CheckEmail(email);
+        if(ckEmail == null){
+            return "ok";
+        }else {
+            return "no";
+        }
+
+
+    }
 }

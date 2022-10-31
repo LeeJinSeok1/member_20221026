@@ -38,6 +38,9 @@
     <select id="CheckEmail" parameterType="String" resultType="String">
         select memberEmail from member_table where memberEmail=#{email}
     </select>
+    <select id="mf" parameterType="Long" resultType="mDTO">
+        select*from member_table where memberId=#{findId}
+    </select>
 
 </mapper>
 

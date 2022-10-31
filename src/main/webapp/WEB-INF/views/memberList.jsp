@@ -11,6 +11,8 @@
 <head>
     <title>List</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <script src="/resources/js/jqurey.js"></script>
+
 </head>
 <body>
 <h2>회원전체목록</h2>
@@ -26,6 +28,7 @@
         <th>전화번호</th>
         <th>조회하기</th>
         <th>삭제하기</th>
+        <th>조회(ajax)</th>
     </tr>
     <c:forEach items="${members}" var="mem">
         <tr>
@@ -41,15 +44,66 @@
                 <a href="/memberDetail?memberId=${mem.memberId}">조회</a>
             </td>
             <td><button class="btn btn-danger" onclick="dBtn(${mem.memberId})">삭제</button></td>
+            <td><button class="btn btn-primary" onclick="find1(${mem.memberId})">조회</button> </td>
         </tr>
     </c:forEach>
 </table>
+    <div id="member"></div>
 </div>
 <script>
     const dBtn = (clickId) => {
         console.log('${members}');
         console.log(clickId);
         location.href= "/delete?memberId="+clickId;
+    }
+    const find1 = (findId) => {
+        console.log(findId);
+        const div1 = document.getElementById("member")
+        $.ajax({
+            type:"get",
+            url:"/detail-ajax",
+            data:{
+               fId : findId
+            },
+            dateType: "json",
+            success: function (member) {
+                console.log(member)
+                console.log(member.id)
+
+
+                let result1 =
+                    "        <table class=\"table table-striped\">\n" +
+                    "            <tr>\n" +
+                    "                <th>id</th>\n" +
+                    "                <td>"+ member.id +"</td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "                <th>email</th>\n" +
+                    "                <td>" + member.memberEmail + "</td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "                <th>password</th>\n" +
+                    "                <td>" + member.memberPassword + "</td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "                <th>name</th>\n" +
+                    "                <td> " + member.memberName + "</td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "                <th>age</th>\n" +
+                    "                <td>" + member.memberAge + "</td>\n" +
+                    "            </tr>\n" +
+                    "        </table>";
+
+
+
+            },
+            error: function () {
+
+            }
+
+        })
+
     }
 
 </script>

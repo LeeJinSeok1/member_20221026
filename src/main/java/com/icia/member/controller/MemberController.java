@@ -160,6 +160,15 @@ public class MemberController {
 
     }
 
+    @GetMapping("/detail-ajax")
+    public @ResponseBody MemberDTO mf(@RequestParam("fId") Long findId){
+        MemberDTO member = memberService.mf(findId);
+        System.out.println("findId = " + findId);
+
+
+        return member;
+    }
+
 
 
 

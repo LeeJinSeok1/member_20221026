@@ -71,4 +71,8 @@ public class MemberService {
 
 
     }
+
+    public MemberDTO mf(Long findId) {
+        return memberRepository.mf(findId);
+    }
 }

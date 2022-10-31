@@ -51,6 +51,10 @@ public class MemberRepository {
     public String CheckEmail(String email) {
        return  sql.selectOne("member.CheckEmail",email);
     }
+
+    public MemberDTO mf(Long findId) {
+        return sql.selectOne("member.mf",findId);
+    }
 }
 
 

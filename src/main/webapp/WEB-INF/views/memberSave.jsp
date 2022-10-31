@@ -73,11 +73,11 @@
         success: function (result) {
           if(result=="no"){
 
-            ck.innerHTML = "이메일 중복"
+            ck.innerHTML = "이메일 중복입니다."
             ck.style.color="red";
           }else{
 
-            ck.innerHTML = "멋짅 이메일이네요!"
+            ck.innerHTML = "멋진 이메일이네요!"
             ck.style.color="green";
           }
         },
